@@ -20,14 +20,17 @@ public class LoginPage {
 
     /**
      * Enters the email address in the email field
+     *
      * @return LoginPage object for method chaining
      */
     public LoginPage enterEmail(String email) {
         driver.findElement(emailField).sendKeys(email);
         return this;
     }
+
     /**
      * Enters the password in the password field
+     *
      * @return LoginPage object for method chaining
      */
     public LoginPage enterPassword(String password) {
@@ -37,11 +40,13 @@ public class LoginPage {
 
     // click login button
     public void clickLogin() {
-       driver.findElement(loginButton).click();
+        driver.findElement(loginButton).click();
     }
+
     /**
      * Performs complete login action with email and password
-     * @param email - User's email address
+     *
+     * @param email    - User's email address
      * @param password - User's password
      */
     public void login(String email, String password) {
