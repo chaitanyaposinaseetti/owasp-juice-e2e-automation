@@ -2,6 +2,7 @@ package com.sgs.owasp.tests.ui;
 
 import com.sgs.owasp.base.BaseTest;
 import com.sgs.owasp.pages.LoginPage;
+import com.sgs.owasp.utils.WaitUtils;
 import org.testng.annotations.Test;
 
 /**
@@ -21,11 +22,24 @@ public class LoginTest extends BaseTest {
         // Perform login with valid credentials
         loginPage.login("admin@juice-sh.op", "admin123");
 
-        // Temporary wait to see the result
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // Use explicit wait instead of Thread.sleep
+        WaitUtils waitUtils = new WaitUtils(driver, 10);
+        waitUtils.waitForUrlContains("search");  // Wait for redirect after login
     }
+
+    //@Test
+    /* public void testInvalidLogin() {
+        // Navigate to login page
+        driver.get("http://localhost:3001/#/login");
+
+        // Create LoginPage and WaitUtils
+        LoginPage loginPage = new LoginPage(driver);
+        WaitUtils waitUtils = new WaitUtils(driver, 10);
+
+        // Perform login with invalid credentials
+        loginPage.login("invalid@test.com", "wrongpassword");
+
+        // Wait a moment to see error message (we'll add assertion later)
+        waitUtils.waitForUrlContains("login");  // Should stay on login page
+    }*/
 }

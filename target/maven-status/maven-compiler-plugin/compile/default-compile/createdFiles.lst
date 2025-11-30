@@ -1,0 +1,4 @@
+com\sgs\owasp\pages\LoginPage.class
+com\sgs\owasp\config\ConfigReader.class
+com\sgs\owasp\utils\DriverManager.class
+com\sgs\owasp\utils\WaitUtils.class
